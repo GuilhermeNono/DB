@@ -1,0 +1,28 @@
+CREATE DATABASE IF NOT EXISTS GalloFlixDb;
+
+USE GalloFlixDb;
+
+CREATE TABLE IF NOT EXISTS Genre (
+    Id      TINYINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Name    VARCHAR(30) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS Movie (
+    Id              INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    OriginalTitle   VARCHAR(100) NOT NULL,
+    Title   		VARCHAR(100) NOT NULL,
+    Synopsis        TEXT,
+    MovieYear       YEAR,
+    Duration        SMALLINT(3) UNSIGNED,
+    AgeRating       TINYINT UNSIGNED,
+    Image			VARCHAR(200)
+);
+
+CREATE TABLE IF NOT EXISTS MovieGenre (
+    MovieId INT     UNSIGNED NOT NULL,
+    GenreId TINYINT UNSIGNED NOT NULL,
+    PRIMARY KEY (MovieId, GenreId),
+    CONSTRAINT FK_MovieGenre_Movie FOREIGN KEY (MovieId) REFERENCES Movie(Id),
+    CONSTRAINT FK_MovieGenre_Genre FOREIGN KEY (GenreId) REFERENCES Genre(Id)
+);
+
