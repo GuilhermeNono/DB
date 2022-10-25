@@ -52,3 +52,10 @@ SELECT
 	Sum(Duration) AS 'Tempo necessario para assistir os filmes'
 FROM Movie M
 WHERE M.MovieYear BETWEEN 1990 and 2010;
+
+-- Exibir a media de tempo necessario para assistir os filmes que estreiaram entre 1990 e 2010
+
+SELECT 
+	AVG(Duration) AS 'Tempo necessario para assistir os filmes'
+FROM Movie M
+WHERE M.MovieYear BETWEEN 1990 and 2010;
